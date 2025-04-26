@@ -1,0 +1,25 @@
+name = "openai-api-router"
+main = "src/index.js"
+compatibility_date = "2023-09-01"
+
+[vars]
+# 模型名称关键词到API端点的映射，JSON格式字符串
+MODEL_MAPPINGS = """{
+"gpt":"https://api.xi-ai.cn/v1",
+"deepseek":"https://api.ppinfra.com/v3/openai",
+"free":"https://openrouter.ai/api/v1",
+"@cf":"https://api.cloudflare.com/client/v4/accounts/xxxxxx/ai/v1"
+
+}"""
+
+# API端点到API密钥的映射，JSON格式字符串
+API_KEYS = """{
+    "https://api.xi-ai.cn/v1":"sk-xxxxx",
+    "https://api.ppinfra.com/v3/openai":"sk_xxxxxx",
+    "https://openrouter.ai/api/v1":"sk-xxxxxx",
+    "https://api.cloudflare.com/client/v4/accounts/xxxx/ai/v1":"xxxxx"
+    
+    }"""
+
+# 允许自定义APIkey,可设置多个
+AUTH_KEYS = """["sk-xxxxxx", "sk-xxxxx2"]""" 
