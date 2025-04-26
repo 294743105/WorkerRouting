@@ -1,4 +1,11 @@
-# OpenAI API 路由转发 Worker
+# OpenAI API 路由转发 Worker / API Routing Worker
+
+<div align="center">
+  <a href="#openai-api-路由转发-worker">中文文档</a> | 
+  <a href="#openai-api-routing-worker">English Document</a>
+</div>
+
+---
 
 这是一个 Cloudflare Worker，用于将 OpenAI API 格式的请求根据模型名称路由到不同的 API 端点。
 问：该项目可以做什么？
@@ -79,8 +86,6 @@ wrangler login
 npm run deploy
 ```
 
-
-
 ## 使用方式
 
 部署后，您将获得一个唯一的 Cloudflare Worker URL。使用此 URL 作为 OpenAI API 的基础 URL，并在请求中提供您预先定义的自定义API密钥。
@@ -117,11 +122,9 @@ curl https://your-worker.your-subdomain.workers.dev/v1/chat/completions \
 2. 您的自定义API密钥 (例如：sk-xxxxxx)
 3. 您需要使用的模型ID
 
+Worker会根据请求的模型名称自动路由到正确的API端点并使用相应的提供商API密钥。这样您就可以使用单一的API端点和密钥访问所有配置的模型。
 
-Worker会根据请求的模型名称自动路由到正确的API端点并使用相应的提供商API密钥。这样您就可以使用单一的API端点和密钥访问所有配置的模型。 
-
-
-<br/><br/>
+---
 
 # OpenAI API Routing Worker
 
@@ -243,4 +246,4 @@ Your client application (such as ChatBox or ChatNextWeb) only needs to know:
 2. Your custom API key (e.g., sk-xxxxxx)
 3. The model ID you need to use
 
-The Worker will automatically route to the correct API endpoint based on the model name in the request and use the corresponding provider API key. This way, you can access all configured models using a single API endpoint and key. 
+The Worker will automatically route to the correct API endpoint based on the model name in the request and use the corresponding provider API key. This way, you can access all configured models using a single API endpoint and key.
