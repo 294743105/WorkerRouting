@@ -204,7 +204,8 @@ function createCorsResponse(response) {
  * 根据模型名称决定使用哪个API端点
  */
 function determineTargetApi(requestBody, env) {
-  const modelName = requestBody.model?.toLowerCase() || '';
+  // 保留原始大小写，不转换为小写
+  const modelName = requestBody.model || '';
   
   console.log(`Processing request for model: ${modelName}`);
   
@@ -238,7 +239,7 @@ function determineTargetApi(requestBody, env) {
   // 根据模型名称匹配关键词
   let targetEndpoint = null;
   
-  // 查找包含关键词的第一个匹配项
+  // 查找包含关键词的第一个匹配项（大小写敏感）
   for (const [keyword, endpoint] of Object.entries(modelMappings)) {
     if (modelName.includes(keyword)) {
       targetEndpoint = endpoint;
